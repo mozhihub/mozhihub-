@@ -747,77 +747,141 @@
   </section>
   <!-- End About Us Section -->
 
-  <!-- ======= Partner Section ======= -->
+  
+<!-- ======= Partner Section ======= -->
   <section id="partners" class="partners">
-    <div class="content-container">
-      <div class="container">
-        <div class="section-title">
-          <h2>partners</h2>
-        </div>
+    <h1 align="center"> Our Projects </h1></h2>
+<
+  <style>
+    
 
-        <div class="partners-slider swiper-container">
-          <div class="swiper-wrapper">
-            <!-- Item 1 -->
-            <div class="swiper-slide">
-              <div class="partner-item">
-                <img src="./assets/images/partners/craftsols-logo-cbs.png" class="partner-img" alt="" />
-                <h3>Creative Business Solutions</h3>
-                <p>
-                  Creative Business Solutions Inc. (CBS) is an “award winning”
-                  Certified Participant in the U.S. Small Business
-                  Administration's (SBA) 8(a) Business Development Program and
-                  a U.S. Department of Veterans Affairs (VA), Center for
-                  Veterans Enterprise (CVE), verified/certified Service
-                  Disabled Veteran Owned Small Business (SDVOSB) financial
-                  management consulting firm that provides Financial, Program,
-                  Acquisition, and Logistics Management (modeling and
-                  simulation) and Information Technology solutions (including
-                  Cyber Security) to (DoD) and other Federal Agencies.
-                </p>
-              </div>
-            </div>
-            <!-- End partner item -->
+    .quote-box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 50px;
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: auto;
+    }
 
-            <!-- Item 2 -->
-            <div class="swiper-slide">
-              <div class="partner-item">
-                <img src="./assets/images/partners/craftsols-logo-insource.png" class="partner-img" alt="" />
-                <h3>Insource Pakistan</h3>
-                <p>
-                  Insource Pakistan: Is a system integrator, providing
-                  complete, Power, Solar and IT Solutions. We are resellers,
-                  partners and distributors of NCR, CBS, APC, Schneider,
-                  INETCO & ARTronics, BITS & Protect.
-                </p>
-              </div>
-            </div>
-            <!-- End partner item -->
+    .counters {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
 
-            <!-- Item 3 -->
+    .counter {
+      background: #3fb070;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      min-width: 150px;
+    }
+
+    .counter h2 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: white;
+    }
+
+    .counter p {
+      margin: 5px 0 0;
+      color:white;
+    }
+  </style>
+
+
+  <div class="counters">
+    <div class="counter">
+      <h2 id="clients-count">0</h2>
+      <p>Clients</p>
+    </div>
+    <div class="counter">
+      <h2 id="projects-count">0</h2>
+      <p>Projects</p>
+    </div>
+    <div class="counter">
+      <h2 id="awards-count">0</h2>
+      <p>running</p>
+    </div>
+  </div>
+<script>
+  // Rotating Quotes (unchanged)
+  let quoteIndex = 0;
+  setInterval(() => {
+    quoteIndex = (quoteIndex + 12) % quotes.length;
+    document.getElementById('quote-box').innerText = `"${quotes[quoteIndex]}"`;
+  }, 8000);
+
+  // Auto Counting Animation
+  function animateValue(id, start, end, duration) {
+    let obj = document.getElementById(id);
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      obj.innerText = Math.floor(progress * (end - start) + start);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+
+  // Scroll-based animation trigger
+  const counters = [
+    { id: "clients-count", start: 0, end: 120, duration: 1500 },
+    { id: "projects-count", start: 0, end: 220, duration: 1500 },
+    { id: "awards-count", start: 0, end: 99, duration: 1500 }
+  ];
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const targetId = entry.target.id;
+        const counter = counters.find(c => c.id === targetId);
+        if (counter) {
+          animateValue(counter.id, counter.start, counter.end, counter.duration);
+          observer.unobserve(entry.target); // Run once
+        }
+      }
+    });
+  }, {
+    threshold: 0.5 // Trigger when 50% visible
+  });
+
+  // Attach observer after DOM is ready
+  window.addEventListener('DOMContentLoaded', () => {
+    counters.forEach(counter => {
+      const el = document.getElementById(counter.id);
+      if (el) observer.observe(el);
+    });
+  });
+</script>
+
+ <!-- End partner item -->
+
+         <!-- Item 1 -->
             <div class="swiper-slide">
               <div class="partner-item">
                 <img src="./assets/images/logo.png" class="partner-img" alt="" />
-                <h3>Indus Valley Labs</h3>
+                <h3>MOZHIHUB LOCALIZATION (OPC) Private Limited</h3>
                 <p>
-                  Indus Valley Labs (Pvt) Limited is a full-service Software
-                  Development & IT Consulting Company that provides End-to-End
-                  service for Web, Mobile and Software Application
-                  Development. IVL is a worldwide provider of global IT and
-                  Enterprise application solutions which include Custom
-                  Development, ERP and systems integration and technical
-                  services with registered offices in United Kingdom and
-                  Pakistan as a Private Limited Company.
+                 
                 </p>
               </div>
             </div>
-            <!-- End partner item -->
+       <!-- End partner item -->
           </div>
           <div class="swiper-pagination"></div>
         </div>
       </div>
     </div>
   </section>
-  <!-- End Partner Section -->
+<!-- End Partner Section -->
 
   <!-----footer------->
   <footer id="footer">
