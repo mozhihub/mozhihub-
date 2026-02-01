@@ -954,19 +954,37 @@ with your business.
      chat-icon-size="80px">
   <style>
       
+      df-messenger {
+        /* Side-la full height vara */
+        --df-messenger-chat-window-height: 100vh; 
+        --df-messenger-chat-window-width: 350px; 
+        
+        --df-messenger-bot-message: #C82909;
+        --df-messenger-button-titlebar-color: #701705;
+        
+        /* Left side-la fix panna */
+        position: fixed;
+        top: 0;
+        left: 0; 
+        bottom: 0;
+        z-index: 9999;
+      }
 
+      /* Mobile view-kaga adjustments */
+      @media screen and (max-width: 600px) {
         df-messenger {
-          --df-messenger-bot-message: #fff;
-          --df-messenger-button-titlebar-color: #00A36C;
-          --df-messenger-button-titlebar-color:#00A36C;
-          --df-messenger-chat-background-color:#A9A9A9;
-          --df-messenger-font-color: #000;
-          --df-messenger-send-icon: #00adff;
-          --df-messenger-user-message: #9FE2BF;
-          --df-messenger-chip-border-color:#008000;
-          --df-messanger-chat-icon-size:140px;
-
+          --df-messenger-chat-window-width: 80%; 
+          --df-messenger-chat-window-height: 100%;
         }
+      }
+
+      /* Chatbot button (icon) left side-la irukka */
+      df-messenger-chat-bubble {
+        left: 20px !important; 
+        right: auto !important;
+        bottom: 20px !important;
+      }
+    
    </style>
       
     </df-messenger>
